@@ -49,6 +49,13 @@ Front
 Back
 Front
 
+Tecnologias Frontend
+1. React
+2. Tailwindcss
+3. TypeScript
+4. Redux ToolKit
+5. Vite
+
 Funcionalidades Futuras:
 1. Groups
 2. Video Calls
