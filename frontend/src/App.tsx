@@ -1,15 +1,15 @@
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import Login from './pages/Login'
+import LoginPage from './pages/LoginPage'
 
 const App = () => {
 	return (
 		<Router>
-			<div className="app">
+			<div>
 				<main>
 					<Switch>
 						<Route
 							path="/login"
-							component={Login}
+							component={LoginPage}
 						/>
 					</Switch>
 				</main>
