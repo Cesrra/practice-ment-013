@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Button from './Button'
 import InputField from './InputField'
 import LinkText from './LinkText'
 
@@ -27,6 +28,7 @@ export default function LoginForm() {
 				type="email"
 				value={email}
 				onChange={handleEmailChange}
+				className="w-96"
 			/>
 			<InputField
 				label="PASSWORD"
@@ -35,12 +37,7 @@ export default function LoginForm() {
 				onChange={handlePasswordChange}
 			/>
 			<LinkText className="mb-4 mt-1">Forgot your password?</LinkText>
-			<button
-				type="submit"
-				className="bg-[#7389d9] text-white text-xs font-semibold h-8 rounded-sm"
-			>
-				Login
-			</button>
+			<Button type="submit">Login</Button>
 		</form>
 	)
 }
