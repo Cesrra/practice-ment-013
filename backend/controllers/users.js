@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const createUser = async (req, res) => {
   try {
@@ -33,7 +34,10 @@ export const login = async (req, res) => {
         .status(404)
         .send({ message: "Username or password not found." });
     }
-    return res.send(user);
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    return res.send(token);
   } catch (err) {
     res.status(400).send(err);
   }

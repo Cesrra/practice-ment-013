@@ -1,6 +1,10 @@
 import express from "express";
 import connectDB from "./DB/connect.db.js";
 import routerUser from "./routes/users.js";
+import dotenv from "dotenv";
+import auth from "./middleware/auth.js";
+
+dotenv.config();
 
 const connectApp = async () => {
   try {
@@ -16,6 +20,8 @@ const connectApp = async () => {
 const app = express();
 const { PORT } = process.env;
 app.use(express.json());
+
 app.use("/", routerUser);
+app.use(auth);
 
 connectApp();
