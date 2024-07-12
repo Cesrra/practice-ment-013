@@ -85,6 +85,17 @@ const login = async (req, res) => {
   }
 }
 
+// Get Profile
+const getProfile = async (req, res) => {
+  try {
+    const user = await req.user;
+    if (!user) return res.status(404).json({ error: "user doesn't exist" });
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(error.code || 500).json({ err: error.message })
+  }
+}
+
 // Logout
 const logout = async (req, res) => {
 
@@ -102,4 +113,6 @@ const logout = async (req, res) => {
   }
 }
 
-export { register, login, logout }
+
+
+export { register, login, logout, getProfile }
