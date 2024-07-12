@@ -89,10 +89,10 @@ const login = async (req, res) => {
 const getProfile = async (req, res) => {
   try {
     const user = await req.user;
-    if (!user) return res.status(404).json({ error: "user doesn't exist" });
+    if (!user) return res.status(404).json({ message: "user doesn't exist" });
     return res.status(200).json(user);
   } catch (error) {
-    return res.status(error.code || 500).json({ err: error.message })
+    return res.status(error.code || 500).json({ message: error.message })
   }
 }
 
@@ -109,7 +109,7 @@ const logout = async (req, res) => {
       });
     return res.status(200).json({ message: 'Successfully Logged Out' })
   } catch (error) {
-    return res.status(501).json({ 'logout internal err': error.message });
+    return res.status(501).json({ message: 'Logout err | ' + error.message });
   }
 }
 
