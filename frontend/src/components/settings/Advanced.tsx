@@ -2,7 +2,7 @@ export default function Advanced() {
 	return (
 		<div>
 			<div>
-				<h2>Advanzado</h2>
+				<h2>Avanzado</h2>
 				<h3>Modo desarrollador</h3>
 				<p>
 					El modo desarrollador muestra elementos del menú contextual que resultan
