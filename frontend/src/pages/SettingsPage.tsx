@@ -1,5 +1,5 @@
 import { CrossCircledIcon } from '@radix-ui/react-icons'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import Advanced from '../components/settings/Advanced'
 import MyAccount from '../components/settings/MyAccount'
 import UserSettings from '../components/settings/UserSettings'
@@ -26,8 +26,9 @@ export default function SettingsPage() {
 					<Route
 						path="/settings"
 						exact
-						component={MyAccount}
-					/>
+					>
+						<Redirect to="/settings/my-account" />
+					</Route>
 					{settingOptions.map((option) => (
 						<Route
 							key={option.name}
