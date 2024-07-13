@@ -16,11 +16,11 @@ export default function SettingsPage() {
 	]
 
 	return (
-		<div className="flex">
-			<aside className="basis-[30vw]">
+		<div className="flex h-screen">
+			<aside className="basis-1/3 overflow-y-auto">
 				<UserSettings settingOptions={settingOptions} />
 			</aside>
-			<main className="basis-4/6">
+			<main className="flex-1 overflow-y-auto">
 				<Switch>
 					<Route
 						path="/settings"

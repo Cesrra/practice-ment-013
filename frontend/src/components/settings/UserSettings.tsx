@@ -11,10 +11,8 @@ export default function UserSettings({
 	const location = useLocation()
 	const pathname = location.pathname
 
-	console.log(pathname)
-
 	return (
-		<div className="bg-[#2b2d31] flex h-screen">
+		<div className="bg-[#2b2d31] flex h-full">
 			<div className="grow" />
 			<div className="flex flex-col pt-14 pl-4 pr-3">
 				<h3 className="uppercase text-xs font-semibold text-[#949ba4] px-[10px] pb-[6px] w-48">
@@ -40,7 +38,7 @@ export default function UserSettings({
 						</li>
 					))}
 					<li>
-						<button
+						<a
 							onClick={() => {
 								console.log('cerrar sesión')
 							}}
@@ -48,7 +46,7 @@ export default function UserSettings({
 						>
 							Cerrar sesión
 							<ExitIcon className="w-4" />
-						</button>
+						</a>
 					</li>
 				</ul>
 			</div>
