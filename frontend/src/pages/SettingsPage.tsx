@@ -1,3 +1,4 @@
+import { CrossCircledIcon } from '@radix-ui/react-icons'
 import { Route, Switch } from 'react-router-dom'
 import Advanced from '../components/settings/Advanced'
 import MyAccount from '../components/settings/MyAccount'
@@ -20,7 +21,7 @@ export default function SettingsPage() {
 			<aside className="basis-1/3 overflow-y-auto">
 				<UserSettings settingOptions={settingOptions} />
 			</aside>
-			<main className="flex-1 overflow-y-auto">
+			<main className="flex grow overflow-y-auto">
 				<Switch>
 					<Route
 						path="/settings"
@@ -35,6 +36,15 @@ export default function SettingsPage() {
 						/>
 					))}
 				</Switch>
+				<div className="grow pt-14 bg-[#313338]">
+					<a
+						href="/"
+						className="flex flex-col w-max items-center"
+					>
+						<CrossCircledIcon className="size-9 text-[#b1b6be]" />
+						<p className="text-[#b1b6be] text-xs mt-1 font-semibold">ESC</p>
+					</a>
+				</div>
 			</main>
 		</div>
 	)

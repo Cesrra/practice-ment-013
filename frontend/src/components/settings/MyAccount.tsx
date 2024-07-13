@@ -1,10 +1,9 @@
-import { CrossCircledIcon } from '@radix-ui/react-icons'
 import Button from '../login/Button'
 import AccountProfileCard from './AccountProfileCard'
 
 export default function MyAccount() {
 	return (
-		<div className="bg-[#313338] flex overflow-y-auto">
+		<div className="bg-[#313338] overflow-y-auto no-scrollbar">
 			<section className="pt-14 pb-20 px-10 w-min">
 				<h2 className="text-xl font-medium text-white mb-5">Mi cuenta</h2>
 				<AccountProfileCard />
@@ -42,15 +41,6 @@ export default function MyAccount() {
 					</Button>
 				</div>
 			</section>
-			<div className="grow pt-14">
-				<a
-					href="/"
-					className="flex flex-col w-max items-center"
-				>
-					<CrossCircledIcon className="size-9 text-[#b1b6be]" />
-					<p className="text-[#b1b6be] text-xs mt-1 font-semibold">ESC</p>
-				</a>
-			</div>
 		</div>
 	)
 }
