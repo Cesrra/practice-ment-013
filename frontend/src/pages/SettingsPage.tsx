@@ -17,7 +17,7 @@ export default function SettingsPage() {
 
 	return (
 		<div className="flex">
-			<aside className="basis-2/6">
+			<aside className="basis-[30vw]">
 				<UserSettings settingOptions={settingOptions} />
 			</aside>
 			<main className="basis-4/6">
