@@ -1,28 +1,27 @@
+import MySwitch from './MySwitch'
+
 export default function Advanced() {
 	return (
-		<div>
-			<div>
-				<h2>Avanzado</h2>
-				<h3>Modo desarrollador</h3>
-				<p>
+		<div className="pt-14 pb-20 px-10 w-min bg-[#313338] overflow-y-auto no-scrollbar">
+			<div className="w-[660px]">
+				<h2 className="text-xl font-medium text-white mb-5">Avanzado</h2>
+				<div className="flex justify-between">
+					<h3 className="text-lg text-white mb-5">Modo desarrollador</h3>
+					<MySwitch />
+				</div>
+				<p className="text-[#aaafb6] text-sm">
 					El modo desarrollador muestra elementos del menú contextual que resultan
 					útiles para personas que programan aplicaciones con la{' '}
+					<a
+						target="_blank"
+						href="https://discord.com/developers/docs/intro"
+						className="text-[#05a8fc] hover:underline cursor-pointer"
+					>
+						API de Discord
+					</a>
+					.
 				</p>
 			</div>
-			<MySwitch />
 		</div>
-	)
-}
-
-import * as Switch from '@radix-ui/react-switch'
-
-function MySwitch() {
-	return (
-		<Switch.Root
-			className="w-[42px] h-6 bg-[#80848e] rounded-full relative data-[state=checked]:bg-[#22a559] outline-none cursor-default"
-			id="airplane-mode"
-		>
-			<Switch.Thumb className="block size-[21px] bg-white rounded-full transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[19px]" />
-		</Switch.Root>
 	)
 }

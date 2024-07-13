@@ -1,5 +1,6 @@
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import Advanced from '../components/settings/Advanced'
+import EscapeLink from '../components/settings/EscapeLink'
 import MyAccount from '../components/settings/MyAccount'
 import UserSettings from '../components/settings/UserSettings'
 
@@ -16,17 +17,18 @@ export default function SettingsPage() {
 	]
 
 	return (
-		<div className="flex">
-			<aside className="basis-2/6">
+		<div className="flex h-screen">
+			<aside className="basis-1/3 overflow-y-auto">
 				<UserSettings settingOptions={settingOptions} />
 			</aside>
-			<main className="basis-4/6">
+			<main className="flex grow overflow-y-auto">
 				<Switch>
 					<Route
 						path="/settings"
 						exact
-						component={MyAccount}
-					/>
+					>
+						<Redirect to="/settings/my-account" />
+					</Route>
 					{settingOptions.map((option) => (
 						<Route
 							key={option.name}
@@ -35,6 +37,7 @@ export default function SettingsPage() {
 						/>
 					))}
 				</Switch>
+				<EscapeLink />
 			</main>
 		</div>
 	)
