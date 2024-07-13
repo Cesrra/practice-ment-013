@@ -35,8 +35,10 @@ export default function MyAccount() {
 					Puedes recuperar la cuenta en cualquier momento después de deshabilitarla.
 				</p>
 				<div className="flex gap-4">
-					<Button className="h-8 bg-red-600">Deshabilitar cuenta</Button>
-					<Button className="h-8 bg-transparent border border-red-600">
+					<Button className="h-8 bg-[#da363c] hover:bg-[#a12828] active:bg-[#8f2022]">
+						Deshabilitar cuenta
+					</Button>
+					<Button className="h-8 bg-transparent border border-red-600 hover:bg-[#da363c] active:bg-[#bb3032]">
 						Eliminar cuenta
 					</Button>
 				</div>
