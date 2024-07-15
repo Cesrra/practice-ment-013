@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-import { getHashedPassword, getTokenizedCookie, isValidPassword } from "../utils/auth/auth.utils.js";
+import { getHashedPassword, generateTokenizedCookie, isValidPassword } from "../utils/auth/auth.utils.js";
 
 
 // Register
@@ -48,7 +48,7 @@ const register = async (req, res) => {
       avatar: defaultAvatar
     });
 
-    newUser && getTokenizedCookie(newUser._id, res);
+    newUser && generateTokenizedCookie(newUser._id, res);
     await newUser.save();
 
     return res.status(201).json({ success: `${name} has been successfully registered` });
@@ -77,7 +77,7 @@ const login = async (req, res) => {
       message: 'Invalid email or password'
     });
 
-    getTokenizedCookie(user._id, res);
+    generateTokenizedCookie(user._id, res);
     return res.status(200).json({ success: `${user.name} logged in!` })
 
   } catch (error) {
@@ -97,7 +97,7 @@ const getProfile = async (req, res) => {
 }
 
 // Logout
-const logout = async (req, res) => {
+const logout = (req, res) => {
 
   try {
     res.cookie('jwt', '',

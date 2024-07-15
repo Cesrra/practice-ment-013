@@ -12,7 +12,7 @@ const getHashedPassword = async (password) => {
   }
 }
 
-const getTokenizedCookie = (userId, res) => {
+const generateTokenizedCookie = (userId, res) => {
 
   try {
     const token = jwt.sign({ userId }, JWT_SECRET, {
@@ -39,7 +39,7 @@ const isValidPassword = async (plainPass, hashedPass) => {
 
 
 
-export { getHashedPassword, getTokenizedCookie, isValidPassword }
+export { getHashedPassword, generateTokenizedCookie, isValidPassword }
 
 
 
