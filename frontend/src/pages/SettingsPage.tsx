@@ -1,8 +1,8 @@
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Advanced from '../components/settings/Advanced'
 import EscapeLink from '../components/settings/EscapeLink'
-import MyAccount from '../components/settings/MyAccount'
 import UserSettings from '../components/settings/UserSettings'
+import MyAccount from './MyAccount'
 
 export interface SettingOption {
 	name: string
