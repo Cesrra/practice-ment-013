@@ -9,41 +9,27 @@ const UserSchema = new Schema({
     minlength: [4, "Username must be at least 4 characters"],
     unique: true
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    validate: {
-      validator: function (val) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && val.lenngth > 10;
-      },
-      message: "email must exceed 9 characters and has email format"
-    }
-  },
-
-  avatar: {
+  password: {
     type: String,
     required: true
   },
-
-  phone: {
+  email: {
     type: String,
     required: true,
     unique: true
   },
-  password: {
+  avatar: {
     type: String,
-    validate: {
-      validator: function (v) {
-        return /^(?=.*[A-Z])(?=.*\d).{10,}$/.test(v); // 
-      },
-      message: 'Password must contain at least one uppercase letter, one number, and be at least 8 characters long!'
-    }
+    sparse: true
+  },
+  phone: {
+    type: String,
+    sparse: true
   }
 }, {
   timestamps: true
 })
 
-const User = mongoose.model("User", UserSchema)
+const User = mongoose.model("User", UserSchema);
 
 export default User;
