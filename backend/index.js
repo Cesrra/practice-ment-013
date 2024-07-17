@@ -16,10 +16,10 @@ const connectApp = async () => {
 
 
 const app = express();
-const PORT = process.env.NODE_ENV === 'production' ? process.env.PROD_PORT : process.env.PORT;
 app.use(middlewares);
 
-
+const { PROD_PORT, DEV_PORT, NODE_ENV } = process.env;
+const PORT = NODE_ENV === 'production' ? PROD_PORT : DEV_PORT;
 
 connectApp();
 
