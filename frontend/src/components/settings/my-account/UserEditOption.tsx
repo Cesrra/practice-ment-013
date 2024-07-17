@@ -6,11 +6,13 @@ export default function UserEditOption({
 	children,
 	canDelete,
 	className,
+	onClickEdit,
 }: {
 	title: string
 	children: React.ReactNode
 	canDelete?: boolean
 	className?: string
+	onClickEdit?: () => void
 }) {
 	return (
 		<div className={clsx('flex justify-between', className)}>
@@ -20,7 +22,12 @@ export default function UserEditOption({
 			</div>
 			<div>
 				{canDelete && <Button variant="ghost">Eliminar</Button>}
-				<Button variant="secondary">Editar</Button>
+				<Button
+					onClick={onClickEdit}
+					variant="secondary"
+				>
+					Editar
+				</Button>
 			</div>
 		</div>
 	)

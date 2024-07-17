@@ -1,4 +1,4 @@
-import MySwitch from './MySwitch'
+import MySwitch from '../components/settings/MySwitch'
 
 export default function Advanced() {
 	return (
