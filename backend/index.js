@@ -1,13 +1,12 @@
 import express from 'express'
 import connectDB from './DB/connect.db.js';
-import mainRouter from './routes/mainRouter.js'
-import cookieParser from 'cookie-parser';
+import middlewares from './middlewares/app.middleware.js';
 
 const connectApp = async () => {
 
   try {
     await connectDB();
-    app.listen(PORT || 8080, () => {
+    app.listen(PORT, () => {
       console.log(`Listening on port ${PORT}`);
     })
   } catch (error) {
@@ -17,10 +16,8 @@ const connectApp = async () => {
 
 
 const app = express();
-const PORT = process.env.NODE_ENV === 'production' ? 8080 : process.env.PORT;
-app.use(express.json());
-app.use(cookieParser());
-app.use(mainRouter);
+const PORT = process.env.NODE_ENV === 'production' ? process.env.PROD_PORT : process.env.PORT;
+app.use(middlewares);
 
 
 

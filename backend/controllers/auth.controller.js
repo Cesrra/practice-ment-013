@@ -40,12 +40,13 @@ const register = async (req, res) => {
     });
 
     const defaultAvatar = 'https://avatar.iran.liara.run/public/49';
+    const avatar = req.body.avatar ? req.body.avatar : defaultAvatar;
     const hashedPassword = await getHashedPassword(password);
     const newUser = new User({
       name,
       password: hashedPassword,
       email,
-      avatar: defaultAvatar
+      avatar
     });
 
     newUser && generateTokenizedCookie(newUser._id, res);
