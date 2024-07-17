@@ -1,30 +1,22 @@
-interface InputFieldProps {
+import { InputHTMLAttributes } from 'react'
+
+interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 	label: string
-	type: string
-	value: string
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-	placeholder?: string
 	className?: string
 }
 export default function InputField({
 	label,
-	type,
-	value,
-	onChange,
-	placeholder,
 	className,
+	...props
 }: InputFieldProps) {
 	return (
-		<label className="flex text-[#b5bac1]  flex-col text-[10px] font-extrabold gap-1 mt-4">
+		<label className="flex text-[#b3b8bf]  flex-col text-xs font-bold gap-2 uppercase">
 			{label}
 			<input
-				type={type}
-				value={value}
-				onChange={onChange}
-				placeholder={placeholder}
-				className={`text-sm text-[#dcdee1] font-normal h-9 pl-4 bg-[#323338] border-2 border-[#2b2c31] rounded-sm ${className}`}
+				className={`text-[#d6d8db] text-base font-normal h-10 p-[10px] bg-[#1e1f22] placeholder:text-[#85878a] rounded focus:outline-0 ${className}`}
 				required
 				aria-label={label}
+				{...props}
 			/>
 		</label>
 	)
