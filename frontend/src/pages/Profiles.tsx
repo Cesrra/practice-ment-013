@@ -1,14 +1,12 @@
 import { useState } from 'react'
-import Button from '../components/Button'
 import InputField from '../components/login/InputField'
 import MyAccountOption from '../components/settings/my-account/MyAccountOption'
-import UserAvatar from '../components/settings/my-account/UserAvatar'
-import UserBanner from '../components/settings/my-account/UserBanner'
+import PreviewCard from '../components/settings/profiles/PreviewCard'
 
 export default function Profiles() {
 	const user = {
 		name: 'John Doe',
-		pronouns: undefined,
+		pronouns: '',
 		username: 'johndoe',
 		email: 'johndoe@gmail.com',
 		phone: '1234567890',
@@ -19,7 +17,7 @@ export default function Profiles() {
 	}
 
 	const [showedName, setShowedName] = useState(user.name)
-	const [pronouns, setPronouns] = useState<string | undefined>(user.pronouns)
+	const [pronouns, setPronouns] = useState(user.pronouns)
 
 	const handleChangeShowedName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setShowedName(e.target.value)
@@ -38,14 +36,14 @@ export default function Profiles() {
 						label="Mostrar nombre"
 						value={showedName}
 						onChange={handleChangeShowedName}
-						placeholder="placeholder"
+						placeholder={user.username}
 					/>
 					<hr className="my-6 border border-[#3b3d43]" />
 					<InputField
 						label="Pronombres"
 						value={pronouns}
 						onChange={handleChangePronouns}
-						placeholder="placeholder"
+						placeholder="Ańade tus pronombres"
 					/>
 					<hr className="my-6 border border-[#3b3d43]" />
 					<MyAccountOption
@@ -60,20 +58,10 @@ export default function Profiles() {
 					<h3 className="text-xs uppercase font-semibold text-[#b5bac1] mb-2">
 						vista previa
 					</h3>
-					<div className="w-full bg-[#1e1f22] pb-4 rounded-lg">
-						<UserBanner image={user.banner} />
-						<div className="relative flex flex-col pl-4 pt-16 pr-4">
-							<UserAvatar />
-							<p className="text-white text-xl font-bold">{user.name}</p>
-							<p className="text-[#DFE0E4] text-sm">{user.username}</p>
-							<Button
-								variant="secondary"
-								className="mt-4"
-							>
-								Botón de ejemplo
-							</Button>
-						</div>
-					</div>
+					<PreviewCard
+						showedName={showedName}
+						pronuons={pronouns}
+					/>
 				</div>
 			</div>
 		</section>
