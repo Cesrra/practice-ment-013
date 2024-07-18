@@ -12,11 +12,10 @@ const corsOptions = {
 };
 
 const middlewares = [
+  cors(corsOptions),
   express.json(),
   cookieParser(),
-  mainRouter,
-  cors(corsOptions)
-
-]
+  mainRouter
+];
 
 export default middlewares;
