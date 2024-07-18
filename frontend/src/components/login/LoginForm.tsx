@@ -8,10 +8,10 @@ export default function LoginForm() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		try {
-			loginService({ email, password })
+			await loginService({ email, password })
 		} catch (error) {
 			if (error instanceof Error) {
 				console.error(error.message)

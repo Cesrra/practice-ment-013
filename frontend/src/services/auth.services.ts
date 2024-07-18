@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API
+const BASE_URL = import.meta.env.VITE_API_ALT
 
 export async function login({
 	email,
