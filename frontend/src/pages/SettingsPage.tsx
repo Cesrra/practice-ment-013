@@ -1,8 +1,9 @@
 import { Redirect, Route, Switch } from 'react-router-dom'
-import Advanced from '../components/settings/Advanced'
 import EscapeLink from '../components/settings/EscapeLink'
 import UserSettings from '../components/settings/UserSettings'
+import Advanced from './Advanced'
 import MyAccount from './MyAccount'
+import Profiles from './Profiles'
 
 export interface SettingOption {
 	name: string
@@ -13,6 +14,7 @@ export interface SettingOption {
 export default function SettingsPage() {
 	const settingOptions: SettingOption[] = [
 		{ name: 'Mi cuenta', href: '/settings/my-account', component: MyAccount },
+		{ name: 'Perfiles', href: '/settings/profiles', component: Profiles },
 		{ name: 'Avanzado', href: '/settings/advanced', component: Advanced },
 	]
 

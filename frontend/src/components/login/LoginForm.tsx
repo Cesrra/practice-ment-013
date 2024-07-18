@@ -20,24 +20,31 @@ export default function LoginForm() {
 	}
 	return (
 		<form
-			className="flex flex-col"
+			className="flex flex-col gap-4"
 			onSubmit={handleSubmit}
 		>
 			<InputField
-				label="EMAIL"
+				label="correo electrónico"
 				type="email"
 				value={email}
 				onChange={handleEmailChange}
-				className="w-96"
+				className="w-[416px]"
 			/>
-			<InputField
-				label="PASSWORD"
-				type="password"
-				value={password}
-				onChange={handlePasswordChange}
-			/>
-			<LinkText className="mb-4 mt-1">Forgot your password?</LinkText>
-			<Button type="submit">Login</Button>
+			<div>
+				<InputField
+					label="contraseña"
+					type="password"
+					value={password}
+					onChange={handlePasswordChange}
+				/>
+				<LinkText className="mt-1">¿Has olvidado la contraseña?</LinkText>
+			</div>
+			<Button
+				type="submit"
+				className="h-11"
+			>
+				Iniciar sesión
+			</Button>
 		</form>
 	)
 }
