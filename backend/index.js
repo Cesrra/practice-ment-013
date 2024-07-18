@@ -2,6 +2,7 @@ import express from "express";
 import connectDB from "./DB/connect.db.js";
 import middlewares from "./middlewares/app.middleware.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const connectApp = async () => {
   try {
