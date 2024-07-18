@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { login as loginService } from '../../services/auth.services'
 import Button from '../Button'
 import InputField from './InputField'
 import LinkText from './LinkText'
@@ -9,6 +10,14 @@ export default function LoginForm() {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		try {
+			loginService({ email, password })
+		} catch (error) {
+			if (error instanceof Error) {
+				console.error(error.message)
+			}
+			console.error(error)
+		}
 	}
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
