@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import TogglerButton from '../../TogglerButton'
 import UserEditOption from './UserEditOption'
 
 export default function UserEditOptions() {
+	const history = useHistory()
+
 	const user = {
 		name: 'John Doe',
 		username: 'johndoe',
@@ -53,6 +56,7 @@ export default function UserEditOptions() {
 			<UserEditOption
 				title="Mostrar nombre"
 				className="mb-6"
+				onClickEdit={() => history.push('/settings/profiles')}
 			>
 				{name}
 			</UserEditOption>

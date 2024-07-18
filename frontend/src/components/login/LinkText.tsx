@@ -8,7 +8,7 @@ export default function LinkText({ children, href, className }: LinkTextProps) {
 	return (
 		<a
 			href={href}
-			className={`cursor-pointer text-[10px] font-extrabold text-[#05a8fc] ${className}`}
+			className={`cursor-pointer text-xs text-[#05a8fc] font-medium ${className}`}
 		>
 			{children}
 		</a>
