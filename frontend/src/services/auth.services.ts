@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_ALT
+const BASE_URL = import.meta.env.VITE_API
 
 export async function login({
 	email,
@@ -13,13 +13,16 @@ export async function login({
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			email: email,
-			password: password,
+			email,
+			password,
 		}),
+		credentials: 'include',
 	})
-	const data = await res.json()
 	if (!res.ok) {
-		throw new Error(data.message)
+		const errorData = await res.json()
+		throw new Error(errorData.message)
 	}
+
+	const data = await res.json()
 	return data
 }

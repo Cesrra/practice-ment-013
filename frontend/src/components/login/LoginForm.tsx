@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { login as loginService } from '../../services/auth.services'
 import Button from '../Button'
 import InputField from './InputField'
@@ -8,15 +9,21 @@ export default function LoginForm() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
+	const history = useHistory()
+
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		try {
-			await loginService({ email, password })
+			const data = await loginService({ email, password })
+			if (data.success) {
+				history.push('/')
+			}
 		} catch (error) {
 			if (error instanceof Error) {
 				console.error(error.message)
+			} else {
+				console.error(error)
 			}
-			console.error(error)
 		}
 	}
 
