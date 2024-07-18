@@ -1,8 +1,8 @@
 import express from "express";
 import connectDB from "./DB/connect.db.js";
-import middlewares from "./middlewares/app.middleware.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import mainRouter from '../routes/mainRouter.js';
 
 const connectApp = async () => {
   try {
@@ -28,6 +28,6 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(middlewares);
+app.use(mainRouter);
 
 connectApp();
