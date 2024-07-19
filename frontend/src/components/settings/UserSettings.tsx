@@ -15,6 +15,7 @@ export default function UserSettings({
 	const handleCloseSession = async () => {
 		try {
 			await logout()
+			document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 			window.location.reload()
 		} catch (error) {
 			console.log(error)
