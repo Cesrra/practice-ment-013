@@ -5,7 +5,7 @@ import cors from 'cors';
 
 
 const corsOptions = {
-  origin: 'https://chatapp-front-pxl9.onrender.com/',
+  origin: 'https://chatapp-front-pxl9.onrender.com',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   allowedHeaders: 'Content-Type,Authorization'
