@@ -1,8 +1,8 @@
 import React, { createContext } from 'react'
-import { AuthState } from '../components/AuthProvider'
+import { AuthState, User } from '../components/AuthProvider'
 
 interface AuthContextType {
-	isAuthenticated: boolean
+	user: User | null
 	loading: boolean
 	setAuth: React.Dispatch<React.SetStateAction<AuthState>>
 }

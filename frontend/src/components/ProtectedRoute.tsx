@@ -16,7 +16,7 @@ const ProtectedRoute = ({
 		throw new Error('ProtectedRoute debe ser usado dentro de AuthProvider')
 	}
 
-	const { isAuthenticated, loading } = context
+	const { user, loading } = context
 
 	if (loading) {
 		return <div>Cargando...</div>
@@ -26,7 +26,7 @@ const ProtectedRoute = ({
 		<Route
 			{...rest}
 			render={(props) =>
-				isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+				user ? <Component {...props} /> : <Redirect to="/login" />
 			}
 		/>
 	)
