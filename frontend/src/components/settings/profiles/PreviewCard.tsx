@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { AuthContext } from '../../../context/AuthContext'
+import { User } from '../../../types/user.types'
 import Button from '../../Button'
 import UserAvatar from '../my-account/UserAvatar'
 import UserBanner from '../my-account/UserBanner'
@@ -9,17 +12,13 @@ export default function PreviewCard({
 	showedName: string
 	pronuons: string
 }) {
-	const user = {
-		name: 'John Doe',
-		username: 'johndoe',
-		email: 'johndoe@gmail.com',
-		phone: '1234567890',
-		avatar:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qWpVluieSF9ckMFKxqxElfTbJ-5JUeXheA&s',
-		banner:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA-zWazk7BxH128jXN0XHNY2wh8Q1NytfiTw&s',
-	}
-	const { username } = user
+	const context = useContext(AuthContext)
+	const user: User = context?.user
+
+	const { email } = user
+
+	const username = email?.split('@')[0]
+
 	return (
 		<div className="w-full bg-[#1e1f22] pb-4 rounded-lg">
 			<UserBanner />

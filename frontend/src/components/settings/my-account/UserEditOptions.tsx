@@ -1,35 +1,31 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../../../context/AuthContext'
+import { User } from '../../../types/user.types'
 import TogglerButton from '../../TogglerButton'
 import UserEditOption from './UserEditOption'
 
 export default function UserEditOptions() {
 	const history = useHistory()
 
-	const user = {
-		name: 'John Doe',
-		username: 'johndoe',
-		email: 'johndoe@gmail.com',
-		phone: '1234567890',
-		avatar:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qWpVluieSF9ckMFKxqxElfTbJ-5JUeXheA&s',
-		banner:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA-zWazk7BxH128jXN0XHNY2wh8Q1NytfiTw&s',
-	}
-	const { name, username, email, phone } = user
+	const context = useContext(AuthContext)
+	const user: User = context?.user
+	const phone = '123456789'
+	const username = user.email.split('@')[0]
 
 	const [showEmail, setShowEmail] = useState(false)
 	const [showPhone, setShowPhone] = useState(false)
 
-	const emailHideLength = email.split('@')[0].length
-	const hiddenEmail = '*'.repeat(emailHideLength) + '@' + email.split('@')[1]
+	const emailHideLength = user.email.split('@')[0].length
+	const hiddenEmail =
+		'*'.repeat(emailHideLength) + '@' + user.email.split('@')[1]
 
 	const phoneHideLength = phone.length - 4
 	const hiddenPhone = '*'.repeat(phoneHideLength) + phone.slice(-4)
 
 	const emailOptionContent = (
 		<>
-			{showEmail ? email : hiddenEmail}{' '}
+			{showEmail ? user.email : hiddenEmail}{' '}
 			<TogglerButton
 				variant="top aligned"
 				text="Mostrar"
@@ -58,7 +54,7 @@ export default function UserEditOptions() {
 				className="mb-6"
 				onClickEdit={() => history.push('/settings/profiles')}
 			>
-				{name}
+				{user.name}
 			</UserEditOption>
 			<UserEditOption
 				title="Nombre de usuario"

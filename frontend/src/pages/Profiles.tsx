@@ -1,23 +1,18 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import InputField from '../components/login/InputField'
 import MyAccountOption from '../components/settings/my-account/MyAccountOption'
 import PreviewCard from '../components/settings/profiles/PreviewCard'
+import { AuthContext } from '../context/AuthContext'
+import { User } from '../types/user.types'
 
 export default function Profiles() {
-	const user = {
-		name: 'John Doe',
-		pronouns: '',
-		username: 'johndoe',
-		email: 'johndoe@gmail.com',
-		phone: '1234567890',
-		avatar:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qWpVluieSF9ckMFKxqxElfTbJ-5JUeXheA&s',
-		banner:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA-zWazk7BxH128jXN0XHNY2wh8Q1NytfiTw&s',
-	}
+	const context = useContext(AuthContext)
+	const user: User = context?.user
+	const { email } = user
+	const username = email?.split('@')[0]
 
 	const [showedName, setShowedName] = useState(user.name)
-	const [pronouns, setPronouns] = useState(user.pronouns)
+	const [pronouns, setPronouns] = useState('')
 
 	const handleChangeShowedName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setShowedName(e.target.value)
@@ -36,7 +31,7 @@ export default function Profiles() {
 						label="Mostrar nombre"
 						value={showedName}
 						onChange={handleChangeShowedName}
-						placeholder={user.username}
+						placeholder={username}
 					/>
 					<hr className="my-6 border border-[#3b3d43]" />
 					<InputField

@@ -1,15 +1,9 @@
+import { useContext } from 'react'
+import { AuthContext } from '../../../context/AuthContext'
+
 export default function UserBanner() {
-	const user = {
-		name: 'John Doe',
-		username: 'johndoe',
-		email: 'johndoe@gmail.com',
-		phone: '1234567890',
-		avatar:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qWpVluieSF9ckMFKxqxElfTbJ-5JUeXheA&s',
-		banner:
-			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA-zWazk7BxH128jXN0XHNY2wh8Q1NytfiTw&s',
-	}
-	const { banner } = user
+	const context = useContext(AuthContext)
+	const banner = context?.user?.banner ?? 'https://cdn.crispedge.com/fcc62a.png'
 	return (
 		<div className="w-full h-24">
 			<img
