@@ -26,3 +26,35 @@ export async function login({
 	const data = await res.json()
 	return data
 }
+
+export async function getProfile() {
+	const res = await fetch(`${BASE_URL}/auth/profile`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		credentials: 'include',
+	})
+	if (!res.ok) {
+		const errorData = await res.json()
+		throw new Error(errorData.message)
+	}
+	const data = await res.json()
+	return data
+}
+
+export async function logout() {
+	const res = await fetch(`${BASE_URL}/auth/logout`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		credentials: 'include',
+	})
+	if (!res.ok) {
+		const errorData = await res.json()
+		throw new Error(errorData.message)
+	}
+	const data = await res.json()
+	return data
+}
