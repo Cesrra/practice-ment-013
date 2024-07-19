@@ -47,14 +47,14 @@ export default function UserSettings({
 							</Link>
 						</li>
 					))}
-					<li>
-						<a
+					<li className="cursor-pointer">
+						<button
 							onClick={handleCloseSession}
 							className="w-full flex items-center justify-between text-[#b5bac1] text-sm mb-[2px] hover:bg-[#35373d] rounded px-[10px] py-[6px] active:bg-[#404249] active:text-white"
 						>
 							Cerrar sesión
 							<ExitIcon className="w-4" />
-						</a>
+						</button>
 					</li>
 				</ul>
 			</div>
