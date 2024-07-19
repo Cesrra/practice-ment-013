@@ -13,7 +13,7 @@ const corsOptions = {
 
 const createCorsMiddleware = (options) => {
   return (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', options.origin.join(', '));
+    res.header('Access-Control-Allow-Origin', options.origin);
     res.header('Access-Control-Allow-Methods', options.methods);
     res.header('Access-Control-Allow-Headers', options.allowedHeaders);
     next();
