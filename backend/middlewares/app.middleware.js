@@ -11,7 +11,18 @@ const corsOptions = {
   allowedHeaders: 'Content-Type,Authorization'
 };
 
+const createCorsMiddleware = (options) => {
+  return (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', options.origin.join(', '));
+    res.header('Access-Control-Allow-Methods', options.methods);
+    res.header('Access-Control-Allow-Headers', options.allowedHeaders);
+    next();
+  };
+};
+
+
 const middlewares = [
+  createCorsMiddleware(corsOptions),
   cors(corsOptions),
   express.json(),
   cookieParser(),

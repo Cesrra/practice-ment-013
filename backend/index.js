@@ -16,7 +16,9 @@ const connectApp = async () => {
 
 
 const app = express();
-app.use(middlewares);
+
+
+middlewares.forEach(mw => { app.use(mw) });
 
 const { PROD_PORT, DEV_PORT, NODE_ENV } = process.env;
 const PORT = NODE_ENV === 'production' ? PROD_PORT : DEV_PORT;
