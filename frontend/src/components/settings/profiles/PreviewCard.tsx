@@ -13,6 +13,8 @@ export default function PreviewCard({
 	pronuons: string
 }) {
 	const context = useContext(AuthContext)
+	if (!context?.user) throw new Error('User not found')
+
 	const user: User = context?.user
 
 	const { email } = user

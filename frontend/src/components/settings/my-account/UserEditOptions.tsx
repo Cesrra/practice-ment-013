@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
-import { User } from '../../../types/user.types'
 import TogglerButton from '../../TogglerButton'
 import UserEditOption from './UserEditOption'
 
@@ -9,7 +8,11 @@ export default function UserEditOptions() {
 	const history = useHistory()
 
 	const context = useContext(AuthContext)
-	const user: User = context?.user
+
+	if (!context?.user) throw new Error('User not found')
+
+	const { user } = context
+
 	const phone = '123456789'
 	const username = user.email.split('@')[0]
 
