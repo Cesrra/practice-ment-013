@@ -22,7 +22,7 @@ const generateTokenizedCookie = (userId, res) => {
 			maxAge: 15 * 24 * 60 * 60 * 1000,
 			secure: NODE_ENV === 'production',
 			httpOnly: true,
-			sameSite: 'lax',
+			sameSite: NODE_ENV === 'production' ? 'none' : 'lax',
 		})
 	} catch (error) {
 		return res.status(500).json({ token_error: error.message })
