@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SignUp from '../../components/SignUp';
 
 const meta = {
-    title: 'Example/SignUp',
+    title: 'Discord/SignUp',
     component: SignUp,
     parameters: {
         layout: 'centered',

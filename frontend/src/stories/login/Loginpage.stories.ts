@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import LoginPage from '../../pages/LoginPage';
 
 const meta = {
-    title: 'Example/loginPage',
+    title: 'Discord/loginPage',
     component: LoginPage,
     parameters: {
         layout: 'centered',
