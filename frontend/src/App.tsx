@@ -1,31 +1,14 @@
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import Home from './pages/Home'
-import LoginPage from './pages/LoginPage'
-import SettingsPage from './pages/SettingsPage'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from './components/AuthProvider'
+import AppRoutes from './routes/AppRoutes'
 
 const App = () => {
 	return (
-		<Router>
-			<div>
-				<main>
-					<Switch>
-						<Route
-							path="/login"
-							component={LoginPage}
-						/>
-						<Route
-							path="/"
-							exact
-							component={Home}
-						/>
-						<Route
-							path="/settings"
-							component={SettingsPage}
-						/>
-					</Switch>
-				</main>
-			</div>
-		</Router>
+		<AuthProvider>
+			<Router>
+				<AppRoutes />
+			</Router>
+		</AuthProvider>
 	)
 }
 
