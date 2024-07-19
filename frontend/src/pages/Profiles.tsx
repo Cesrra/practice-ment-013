@@ -7,6 +7,8 @@ import { User } from '../types/user.types'
 
 export default function Profiles() {
 	const context = useContext(AuthContext)
+	if (!context?.user) throw new Error('User not found')
+
 	const user: User = context?.user
 	const { email } = user
 	const username = email?.split('@')[0]
