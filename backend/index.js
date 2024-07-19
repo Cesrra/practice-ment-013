@@ -22,7 +22,10 @@ const PORT =
     : process.env.PORT;
 
 const corsOptions = {
-  origin: '*',
+  origin: [
+    'http://localhost:5173',
+    'http://186.19.99.110'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
