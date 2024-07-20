@@ -1,7 +1,6 @@
 import { useState } from "react"
 import InputField from "./login/InputField"
 import Button from "./Button"
-import LinkText from "./login/LinkText"
 
 export default function SignUp() {
 

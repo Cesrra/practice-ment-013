@@ -8,7 +8,7 @@ export default function SignUpPage() {
             <h1 className="text-white font-semibold text-2xl mb-5">¡Registrate!</h1>
             <SignUp />
             <p className="text-[#949ba4] text-xs font-medium w-full">
-                ¿Ya tienes una cuenta? <LinkText>Inicia Sesion</LinkText>
+                ¿Ya tienes una cuenta? <LinkText href="/login">Inicia Sesion</LinkText>
             </p>
         </section>
     </main>
