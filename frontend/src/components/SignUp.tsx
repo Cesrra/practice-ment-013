@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InputField from "./login/InputField"
 import Button from "./Button"
 
@@ -8,6 +8,14 @@ export default function SignUp() {
 	const [user, setUser] = useState('')
 	const [password, setPassword] = useState('')
 	const [repeatPassword, setReapetPassword] = useState('')
+	const [validPasswor, setValidPassword] = useState(true)
+
+	useEffect(() => {
+		if(repeatPassword === '' || password === repeatPassword) {
+			setValidPassword(true)
+		}
+		else setValidPassword(false)
+	},[password, repeatPassword])
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -27,6 +35,15 @@ export default function SignUp() {
 		e.preventDefault()
 		setPassword(e.target.value)
 	}
+
+	const handleRepeatPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		e.preventDefault()
+		setReapetPassword(e.target.value)
+	}
+
+	console.log(validPasswor)
+	console.log(password)
+	console.log(repeatPassword)
 
     return(
         <section>
@@ -50,7 +67,7 @@ export default function SignUp() {
 				/>
 				<InputField
 					label="Password"
-					type="text"
+					type="password"
 					value={password}
 					className="w-[416px]"
 					onChange={handlePasswordChange}
@@ -60,7 +77,9 @@ export default function SignUp() {
 					type="text"
 					value={repeatPassword}
 					className="w-[416px]"
+					onChange={handleRepeatPasswordChange}
 				/>
+				{validPasswor ? null : <span className="text-red-600 text-sm">La contraseña no coincide</span>}
 				<Button
 					type="submit"
 					className="h-11"
