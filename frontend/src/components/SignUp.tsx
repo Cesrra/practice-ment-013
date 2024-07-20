@@ -69,7 +69,6 @@ export default function SignUp() {
 					Sign Up
 				</Button>
 			</form>
-			<LinkText className="mt-1">Do you already have an account?</LinkText>
 
         </section>
     )
