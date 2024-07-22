@@ -1,15 +1,16 @@
-import express from 'express'
-import connectDB from './DB/connect.db.js';
-import middlewares from './middlewares/app.middleware.js';
+import express from "express";
+import connectDB from "./DB/connect.db.js";
+import middlewares from "./middlewares/app.middleware.js";
 
 const app = express();
-middlewares.forEach(mw => { app.use(mw) });
+middlewares.forEach((mw) => {
+  app.use(mw);
+});
 
 const { PROD_PORT, DEV_PORT, NODE_ENV } = process.env;
-const PORT = NODE_ENV === 'production' ? PROD_PORT : DEV_PORT;
+const PORT = NODE_ENV === "production" ? PROD_PORT : DEV_PORT;
 
 const connectApp = async () => {
-
   try {
     await connectDB();
     app.listen(PORT, () => {
@@ -17,11 +18,7 @@ const connectApp = async () => {
     });
   } catch (error) {
     console.log(error.message);
-  };
+  }
 };
 
 connectApp();
-
-
-
-
