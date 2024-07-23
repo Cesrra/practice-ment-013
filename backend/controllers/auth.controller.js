@@ -106,7 +106,8 @@ const logout = (req, res) => {
         maxAge: 0,
         expiresIn: new Date(0),
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production'
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'None'
       });
     return res.status(200).json({ message: 'Successfully Logged Out' })
   } catch (error) {
