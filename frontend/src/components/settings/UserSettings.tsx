@@ -2,6 +2,7 @@ import { ExitIcon } from '@radix-ui/react-icons'
 import clsx from 'clsx'
 import { Link, useLocation } from 'react-router-dom'
 import { SettingOption } from '../../pages/SettingsPage'
+import { logout } from '../../services/auth.services'
 
 export default function UserSettings({
 	settingOptions,
@@ -10,6 +11,16 @@ export default function UserSettings({
 }) {
 	const location = useLocation()
 	const pathname = location.pathname
+
+	const handleCloseSession = async () => {
+		try {
+			await logout()
+			document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+			window.location.reload()
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<div className="bg-[#2b2d31] flex h-full">
@@ -37,16 +48,14 @@ export default function UserSettings({
 							</Link>
 						</li>
 					))}
-					<li>
-						<a
-							onClick={() => {
-								console.log('cerrar sesión')
-							}}
+					<li className="cursor-pointer">
+						<button
+							onClick={handleCloseSession}
 							className="w-full flex items-center justify-between text-[#b5bac1] text-sm mb-[2px] hover:bg-[#35373d] rounded px-[10px] py-[6px] active:bg-[#404249] active:text-white"
 						>
 							Cerrar sesión
 							<ExitIcon className="w-4" />
-						</a>
+						</button>
 					</li>
 				</ul>
 			</div>
