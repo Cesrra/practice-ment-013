@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import ProtectedRoute from '../components/ProtectedRoute'
 import Home from '../pages/Home'
 import LoginPage from '../pages/LoginPage'
+import SignUpPage from '../pages/SignUpPage'
 import SettingsPage from '../pages/SettingsPage'
 
 const AppRoutes: React.FC = () => {
@@ -20,6 +21,10 @@ const AppRoutes: React.FC = () => {
 			<ProtectedRoute
 				path="/settings"
 				component={SettingsPage}
+			/>
+			<ProtectedRoute
+				path="/register"
+				component={SignUpPage}
 			/>
 		</Switch>
 	)

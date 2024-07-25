@@ -63,7 +63,7 @@ export default function LoginForm() {
 						value={password}
 						onChange={handlePasswordChange}
 					/>
-					<LinkText className="mt-1">¿Has olvidado la contraseña?</LinkText>
+					<LinkText href='#' className="mt-1">¿Has olvidado la contraseña?</LinkText>
 				</div>
 				<Button
 					type="submit"
