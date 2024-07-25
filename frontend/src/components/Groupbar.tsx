@@ -8,13 +8,13 @@ const Groupbar: React.FC = () => {
   ];
 
   return (
-    <div className="w-16 bg-gray-800 flex flex-col items-center py-4">
+    <div className="w-16 bg-discord-background-primary flex flex-col items-center py-4 border-r border-discord-border">
       {servers.map(server => (
         <img
           key={server.id}
           src={server.icon}
           alt={`Server ${server.id}`}
-          className="w-12 h-12 mb-4 rounded-full cursor-pointer"
+          className="w-12 h-12 mb-4 rounded-full border-2 border-discord-border hover:border-discord-primary cursor-pointer transition-colors"
         />
       ))}
     </div>
