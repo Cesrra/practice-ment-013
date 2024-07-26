@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react"
 import InputField from "./login/InputField"
+import { useHistory } from "react-router-dom"
 import Button from "./Button"
+import { Bounce, toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+import { register } from "../services/auth.services"
 
 export default function SignUp() {
 
@@ -10,6 +15,8 @@ export default function SignUp() {
 	const [repeatPassword, setReapetPassword] = useState('')
 	const [validPasswor, setValidPassword] = useState(true)
 
+	const history = useHistory()
+
 	useEffect(() => {
 		if(repeatPassword === '' || password === repeatPassword) {
 			setValidPassword(true)
@@ -17,8 +24,35 @@ export default function SignUp() {
 		else setValidPassword(false)
 	},[password, repeatPassword])
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		try {
+			const data = await register({
+				name: user,
+				password,
+				confirmedPassword: repeatPassword,
+				email
+			})
+			if(data.success) {
+				history.push('/')
+			}
+		} catch (error) {
+			if (error instanceof Error) {
+				toast.error(error.message, {
+					position: 'top-right',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: 'light',
+					transition: Bounce,
+				})
+			} else {
+				console.error(error)
+			}
+		}
 	}
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,7 +108,7 @@ export default function SignUp() {
 				/>
 				<InputField
 					label="Repeat your password"
-					type="text"
+					type="password"
 					value={repeatPassword}
 					className="w-[416px]"
 					onChange={handleRepeatPasswordChange}
@@ -87,6 +121,7 @@ export default function SignUp() {
 					Sign Up
 				</Button>
 			</form>
+			<ToastContainer/>
 
         </section>
     )

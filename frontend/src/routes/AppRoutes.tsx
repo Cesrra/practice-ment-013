@@ -22,7 +22,7 @@ const AppRoutes: React.FC = () => {
 				path="/settings"
 				component={SettingsPage}
 			/>
-			<ProtectedRoute
+			<Route
 				path="/register"
 				component={SignUpPage}
 			/>
